@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>计算器</title>
+</head>
+
+<body>
+<div>
+    <input type="text" size="5" id="num1" value=""/> 
+    <select id="ysf"> /
+        <option value="+">+</option> 
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" size="5" id="num2" value=""/> 
+    <input type="button" id="btn" value="计算"/> 
+</div>
+<p id="res">请输入运算的数</p>
+
+<script>
+    document.getElementById('btn').onclick=function(){//给按钮绑定点击事件
+        var num1=document.getElementById('num1').value;//把num1里输入的值赋值到script里创建的变量里
+        var num2=document.getElementById('num2').value;//把num2里输入的值赋值到script里创建的变量里
+        var ysf=document.getElementById('ysf').value;//把ysf里选择的符号的值赋值到script里创建的变量里
+
+        var result="错误了！";//输出值，暂时置ERROR，之后将运算结果赋值到这里
+        var flag=true;//立一个布尔值作为验证用
+        if(num1==""){//如果第一个数为空，布尔值否
+            result+="第一个空没填#"
+            flag=false;
+        }else{
+            if(isNaN(num1)){//如果输入的值非数字，布尔值否。isNAN()函数用于检查其参数是否是非数字值。
+                result+="第一个运算元不是数字#"
+                flag=false;
+            }
+        }
+
+        if(num2==""){
+            result+="第二个空没填#"
+            flag=false;
+        }else{
+            if(isNaN(num2)){
+                result+="第二个运算元不是数字"
+                flag=false;
+            }
+        }
+
+        num1=parseFloat(num1);//parseFloat() 函数可解析一个字符串，并返回一个浮点数。将输入的值转为数字型
+        num2=parseFloat(num1);
+        if(flag){
+            switch(ysf){//此处利用switch循环实现不同符号下的四则运算
+                case'+':result=(num1+num2);break;
+                case'-':result=(num1-num2);break;
+                case'*':result=(num1*num2);break;
+                case'/'://除法需要判断除数是否为0
+                    if(num2==0){
+                        result="除数不能为0"
+                    }else{
+                        result="运算结果"+num1+"/"+num2+"="+(num1/num2);
+                    }
+                    break;
+                case'%'://取余也需要判断除数是否为0
+                    if(num2==0){
+                        result="除数不能为0"
+                    }else{
+                        result="运算结果"+num1+"%"+num2+"="+(num1%num2);
+                    }
+                    break;
+            }
+
+        }
+
+        document.getElementById('res').innerHTML=result;//将result赋值到html里res标签中
+    };
+</script>
+</body>
+</html>
