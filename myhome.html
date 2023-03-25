@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <style>
+      body {
+        background-color: #F5F5F5;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      .fade-in {
+        opacity: 1;
+      }
+      h1 {
+        text-align: center;
+        padding-top: 300px;
+        font-family: 仿宋, sans-serif;
+      }
+      .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 30px;
+        border-radius: 20px; /* Added border-radius */
+        cursor: pointer;
+        font-family: sans-serif;
+      }
+      .button:hover {
+        background-color: #3e8e41;
+      }
+      .hide {
+        display: none;
+      }
+      
+      #hello {
+        font-family: sans-serif;
+        padding-top: 280px;
+        font-size: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onload="document.body.classList.add('fade-in')">
+  <body>
+    <h1>欢迎来到我的网站！</h1>
+    <div style="text-align: center;">
+      <a href="#" class="button" onclick="hideH1()">康康我的自我介绍</a>
+    </div>
+      <div style="text-align: center;">
+        <a  class="button" href="https://www.bandbbs.cn/members/101724/follow">加入开发团队</a>
+      </div>
+      <div style="text-align: center;">
+        <a  class="button" href="https://www.bandbbs.cn/members/101724/follow">关注我</a>
+      </div>
+    <!-- Elements to be hidden -->
+    <p class="hide">This is a paragraph that should be hidden.</p>
+    
+    <p id="hello" class="hide">Struggle是米坛社区中专注于小米手环7的资深作者<br>TA对这款智能手环非常熟悉<br>经常发布关于小米手环7的文章、<br>教程、小程序和表盘设计等内容<br>通过TA的分享<br>其他社区成员可以了解到更多有关小米手环7的使用技巧<br>实用功能以及个性化设置等方面的知识<br>Struggle热爱探索科技新产品<br>并善于将自己的使用经验转化为有价值的分享<br>受到了米坛社区成员的广泛关注和赞誉</p>
+    <script>
+      function hideH1() {
+        document.getElementsByTagName("h1")[0].classList.add("hide");
+        document.getElementsByClassName("button")[0].classList.add("hide");
+        document.getElementsByClassName("button")[1].classList.add("hide");
+        document.getElementById("hello").classList.remove("hide");
+        document.getElementById("hellbox").classList.remove("hide");
+      }
+    </script>
+  </body>
+</html>
