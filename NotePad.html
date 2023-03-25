@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>记事本</title>
+    <style>
+        .container {
+  margin: 20px auto;
+  width: 80%;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.buttons {
+  margin-top: 10px;
+  text-align: right;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">记事本</div>
+      <textarea id="note"></textarea>
+      <div class="buttons">
+        <button id="save-button">保存</button>
+        <button id="clear-button">清空</button>
+      </div>
+    </div>
+    <script>
+     const note = document.getElementById('note');
+    const saveButton = document.getElementById('save-button');
+    const clearButton = document.getElementById('clear-button');
+    
+    // 从本地存储中读取已保存的笔记内容
+    if (localStorage.note) {
+      note.value = localStorage.note;
+    }
+    
+    // 点击保存按钮时，将笔记内容保存到本地存储中
+    saveButton.addEventListener('click', function() {
+      localStorage.setItem('note', note.value);
+      alert('笔记已保存！');
+    });
+    
+    // 点击清空按钮时，清空笔记内容
+    clearButton.addEventListener('click', function() {
+      note.value = '';
+    });
+    </script>
+  </body>
+</html>
