@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>3D场景</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #F5F5F5;
+        opacity: 0;
+        transition: opacity 3s ease-in-out;
+      }
+      .fade-in {
+        opacity: 1;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body onload="document.body.classList.add('fade-in')">
+    <script src="https://unpkg.com/three@0.119.0/build/three.js"></script>
+    <script>
+      //创建场景和相机
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+
+      //创建渲染器，设置尺寸为窗口尺寸，并将渲染后的元素添加到body
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      //创建一个Mesh（绿色的3D立方体），并添加到场景中
+      var geometry = new THREE.BoxGeometry();
+      var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      var cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+
+      //设置照相机的位置
+      camera.position.z = 5;
+
+      //浏览器每次渲染的时候更新立方体的旋转角度
+      var animate = function () {
+        requestAnimationFrame(animate);
+
+        
+        cube.rotation.y -= 0.01;
+
+        renderer.render(scene, camera);
+      };
+
+      animate();
+     
+    </script>
+    <p id="res">by Struggle</p>
+    <footer style="color:#5a84a2">
+      <p>Copyright &copy; 2023 Struggle</p>
+    </footer>
+  </body>
+</html>
