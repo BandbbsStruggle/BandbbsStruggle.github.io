@@ -13,15 +13,18 @@
             text-align: center;
         }
         input[type="button"] {
-            padding: 5px 10px;
-            background-color: #5a84a2;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            display: inline-block;
-        }
+    padding: 20px 20px;
+    background-color: #5a84a2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
         /* 设置结果标签样式 */
         p#res {
             margin-top: 10px;
@@ -30,10 +33,26 @@
             color: #5a84a2;
             display: inline-block;
         }
+        body {
+        background-color: #F5F5F5;
+        opacity: 0;
+        transition: opacity 3s ease-in-out;
+      }
+      .fade-in {
+        opacity: 1;
+      }
+      #btn {
+        background-color: #0074D9;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
     </style>
 </head>
 
-<body>
+<body onload="document.body.classList.add('fade-in')">
 <div>
 
     <input  type="text" size="10" id="num1" value="" placeholder="请输入数字"/>
@@ -52,7 +71,7 @@
 </div>
 <p id="res">by Struggle</p>
 <footer style="color:#5a84a2">
-    <p>&copy; Struggle</p>
+    <p>Copyright &copy; 2023 Struggle</p>
   </footer>
 <script>
     document.getElementById('btn').onclick=function(){

@@ -9,7 +9,14 @@
   border: 1px solid #ccc;
   padding: 10px;
 }
-
+body {
+        background-color: #F5F5F5;
+        opacity: 0;
+        transition: opacity 3s ease-in-out;
+      }
+      .fade-in {
+        opacity: 1;
+      }
 .header {
   font-size: 24px;
   font-weight: bold;
@@ -46,7 +53,7 @@ button:hover {
     </style>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body>
+  <body onload="document.body.classList.add('fade-in')">
     <div class="container">
       <div class="header">记事本</div>
       <textarea id="note"></textarea>
@@ -55,6 +62,10 @@ button:hover {
         <button id="clear-button">清空</button>
       </div>
     </div>
+    <p id="res">by Struggle</p>
+    <footer style="color:#5a84a2">
+      <p>Copyright &copy; 2023 Struggle</p>
+    </footer>
     <script>
      const note = document.getElementById('note');
     const saveButton = document.getElementById('save-button');
